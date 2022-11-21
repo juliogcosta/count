@@ -37,11 +37,9 @@ public class FileStorageService
 				throw new Exception("Sorry! Filename contains invalid path sequence " + fileName);
 			}
 
-			Path targetLocation = this.fileStorageLocation.resolve(fileName);
+			Path targetLocation = this.fileStorageLocation.resolve("from-".concat(fileName));
 
 			Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
-			System.out.println(">>> fileName: " + fileName);
 
 			return fileName;
 		} 
